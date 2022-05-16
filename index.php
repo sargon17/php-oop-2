@@ -2,6 +2,7 @@
 
 include_once __DIR__ . "./Product.php";
 include_once __DIR__ . "./FoodProduct.php";
+include_once __DIR__ . "./ToyProduct.php";
 
 $pedigree = new FoodProduct(
   "Pedigree Adult Complete Nutrition Grilled Steak & Vegetable Flavor Dry Dog Food",
@@ -28,6 +29,21 @@ $purina = new FoodProduct(
   "10",
   "Dry Dog Food",
   "Sensitive Skin & Stomach Salmon & Rice Formula"
+);
+
+$toyRope = new ToyProduct(
+  "Mammoth Cottonblend 5 Knot Dog Rope Toy, Color Varies",
+  "https://img.chewy.com/is/image/catalog/80745_MAIN._AC_SL1200_V1633020738_.jpg",
+  "$8.47",
+  "This 5-knot dog rope is made of durable, breathable cottonblend fibers.",
+  "2022-06-16",
+  "2022-06-16",
+  "Mammoth",
+  "Rope",
+  "Cottonblend",
+  "Varies",
+  "5 Knots",
+  "5"
 );
 ?>
 
@@ -63,6 +79,7 @@ $purina = new FoodProduct(
         padding:4px 8px;
         border: 1px solid #bbb;
         position: relative;
+        overflow: hidden;
     }
     .product img {
         width: 100%;
@@ -138,6 +155,10 @@ $purina = new FoodProduct(
         </div>
         <div class="product">
             <?php echo $purina->getInfoCard(); ?>
+            <button class="product-btn">Add to Cart</button>
+        </div>
+        <div class="product">
+            <?php echo $toyRope->getInfoCard(); ?>
             <button class="product-btn">Add to Cart</button>
         </div>
     </div>
