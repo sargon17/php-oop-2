@@ -36,6 +36,15 @@ class User
   {
     return $this->img;
   }
+
+  private function checkDiscount()
+  {
+    if ($this->status == "registered") {
+      return "20%";
+    } else {
+      return "0%";
+    }
+  }
 }
 
 ?>

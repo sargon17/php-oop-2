@@ -180,6 +180,11 @@ $vitamins = new VitaminProduct(
         padding:4px 8px;
         position: relative;
         overflow: hidden;
+        transition: all 0.1s ease-in-out;
+    }
+    .product:hover{
+        box-shadow: 0px 2px 5px -2px #0000009a;
+        transform: scale(0.99);
     }
     .product img {
         width: 100%;
