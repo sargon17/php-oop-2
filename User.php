@@ -3,8 +3,8 @@
 class User
 {
   private $name;
+  private $img;
   private $email;
-  private $password;
   private $role;
   private $status;
   private $created_at;
@@ -12,16 +12,16 @@ class User
 
   public function __construct(
     $name,
+    $img,
     $email,
-    $password,
     $role,
     $status,
     $created_at,
     $updated_at
   ) {
     $this->name = $name;
+    $this->img = $img;
     $this->email = $email;
-    $this->password = $password;
     $this->role = $role;
     $this->status = $status;
     $this->created_at = $created_at;
@@ -31,6 +31,10 @@ class User
   public function getName()
   {
     return $this->name;
+  }
+  public function getImg()
+  {
+    return $this->img;
   }
 }
 

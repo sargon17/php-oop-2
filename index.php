@@ -1,8 +1,21 @@
 <?php
 
+include_once __DIR__ . "./User.php";
+
 include_once __DIR__ . "./Product.php";
 include_once __DIR__ . "./FoodProduct.php";
 include_once __DIR__ . "./ToyProduct.php";
+include_once __DIR__ . "./VitaminProduct.php";
+
+$user = new User(
+  "John Doe",
+  "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
+  "some@mail.com",
+  "animal lover",
+  "registered",
+  "2020-01-01",
+  "2020-01-01"
+);
 
 $pedigree = new FoodProduct(
   "Pedigree Adult Complete Nutrition Grilled Steak & Vegetable Flavor Dry Dog Food",
@@ -45,6 +58,34 @@ $toyRope = new ToyProduct(
   "5 Knots",
   "5"
 );
+
+$toyHotdog = new ToyProduct(
+  "Frisco Baseball Corndog Basket Plush Squeaky Dog Toy, 3 count",
+  "https://img.chewy.com/is/image/catalog/252746_MAIN._AC_SL1200_V1613158281_.jpg",
+  "$9.99",
+  "Plush checkered basket with two detachable corndogs on hook and loop fasteners.",
+  "2022-06-16",
+  "2022-06-16",
+  "Frisco",
+  "Basket",
+  "Plush",
+  "Squeaky",
+  "Dog Toy",
+  "3"
+);
+
+$vitamins = new VitaminProduct(
+  "Zesty Paws Probiotic Bites Pumpkin Flavored Soft Chews Digestive Supplement for Dogs",
+  "https://img.chewy.com/is/image/catalog/124697_MAIN._AC_SL1200_V1644976333_.jpg",
+  "$26.97",
+  "This probiotic supplement is made with Zesty Paws® Probiotic Bites® and contains Zesty Paws® Probiotic Bites® and Zesty Paws® Probiotic Bites®.",
+  "2022-06-16",
+  "2022-06-16",
+  "Zesty Paws",
+  "Digestive Supplement",
+  "Pumpkin Flavored Soft Chews",
+  "Probiotic Bites"
+);
 ?>
 
 <!DOCTYPE html>
@@ -57,10 +98,50 @@ $toyRope = new ToyProduct(
 </head>
 
 <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
     body{
         background-color: #f5f5f5;
-
+        margin: 0;
+        padding: 0;
     }
+    header {
+        background-color: #ffc107;
+        padding: 30px;
+        color: #f5f5f5;
+        box-shadow: 0px 0px 10px #0000005a;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    header .user-info{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: #f5f5f5;
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 5px;
+    }
+
+    header .user-info:hover{
+        background-color: #fece0f;
+    }
+    header .user-img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #fff;
+        overflow: hidden;
+        margin-right: 20px;
+    }
+
     .products-row{
         display: flex;
         flex-direction: row;
@@ -71,13 +152,12 @@ $toyRope = new ToyProduct(
     .product {
         width: 300px;
         min-height: 300px;
-        background-color: #f5f5f5;
         border-radius: 10px;
-        box-shadow: 0px 0px 10px #0000000f;
+        box-shadow: 0px 8px 5px -5px #0000004a;
+        background-color: #fff;
         margin-right: 20px;
         margin-bottom: 20px;
         padding:4px 8px;
-        border: 1px solid #bbb;
         position: relative;
         overflow: hidden;
     }
@@ -147,7 +227,14 @@ $toyRope = new ToyProduct(
         }
 </style>
 <body>
-    <h1>Doge Shop</h1>
+    <header>
+        <h1>Doge Shop</h1>
+        <div>
+            <a href="index.php" class="user-info">
+                <?php echo "{$user->getName()} <img src='{$user->getImg()}' alt='{$user->getName()}' class='user-img'>"; ?>
+            </a>
+        </div>
+    </header>
     <div class="products-row">
         <div class="product">
             <?php echo $pedigree->getInfoCard(); ?>
@@ -159,6 +246,14 @@ $toyRope = new ToyProduct(
         </div>
         <div class="product">
             <?php echo $toyRope->getInfoCard(); ?>
+            <button class="product-btn">Add to Cart</button>
+        </div>
+        <div class="product">
+            <?php echo $toyHotdog->getInfoCard(); ?>
+            <button class="product-btn">Add to Cart</button>
+        </div>
+        <div class="product">
+            <?php echo $vitamins->getInfoCard(); ?>
             <button class="product-btn">Add to Cart</button>
         </div>
     </div>
