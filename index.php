@@ -6,6 +6,7 @@ include_once __DIR__ . "./Product.php";
 include_once __DIR__ . "./FoodProduct.php";
 include_once __DIR__ . "./ToyProduct.php";
 include_once __DIR__ . "./VitaminProduct.php";
+include_once __DIR__ . "./Payment.php";
 
 $user = new User(
   "John Doe",
@@ -16,6 +17,25 @@ $user = new User(
   "2020-01-01",
   "2020-01-01"
 );
+$payment = new Payment(
+  "#100001",
+  "01",
+  "001",
+  "100",
+  "3000$",
+  "2020-01-01",
+  "2020-01-01",
+  "John Doe",
+  "1234 5678 9012 3456",
+  "14/05/2020",
+  "324"
+);
+
+try {
+  $payment->checkExpiryDate($payment->getExpiryDate());
+} catch (Exception $e) {
+  echo $e->getMessage();
+}
 
 $pedigree = new FoodProduct(
   "Pedigree Adult Complete Nutrition Grilled Steak & Vegetable Flavor Dry Dog Food",
